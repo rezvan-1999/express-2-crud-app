@@ -1,5 +1,7 @@
 here you have a products array.you should implement CRUD routes using express and it's folder structure.
 
+<!-- done -->
+
 ### Routes
 
 Routes you should create:
@@ -20,6 +22,7 @@ let products = [
   { id: 4, name: "MacBook Pro 16", price: 2399.99 },
   { id: 5, name: "DJI Mavic Air 2", price: 799.99 },
 ];
+// done
 ```
 
 You should create these folders to organize your application
@@ -27,6 +30,7 @@ You should create these folders to organize your application
 - controllers
 - routes
 - middleware
+<!-- done -->
 
 ---
 
@@ -45,3 +49,5 @@ You should create these folders to organize your application
 ### .env
 
 store the PORT number in a .env file and pass it to app.listen using dotenv package
+
+<!-- done -->
