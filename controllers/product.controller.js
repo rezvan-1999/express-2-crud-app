@@ -61,8 +61,32 @@ function newProduct(req, res) {
 
 function updateProduct(req, res) {
   try {
+    const { id } = req.params;
+    const findProduct = products.find((item) => item.id === Number(id));
+
+    if (!findProduct) {
+      return res
+        .status(404)
+        .json({ msg: `The product with id: ${id} was NOT FOUND` });
+    }
+
+    const newProduct = products.map((product) => {
+      if (product.id === Number(id)) {
+        return {
+          ...product,
+          ...req.body,
+        };
+      }
+      return product;
+    });
+
+    products = newProduct;
+    res.status(200).json({
+      msg: "The product was updated seccessfully!",
+    });
   } catch (error) {
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 }
 
