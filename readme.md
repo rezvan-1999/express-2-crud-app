@@ -37,8 +37,10 @@ You should create these folders to organize your application
 ### middlewares
 
 1. add the built in middlewares to your app like express.json() and express.urlencoded()
+<!-- done -->
 
 2. add the cors middleware to your application
+<!-- done -->
 
 3. Create a middleware that logs the exact time when a request is received by your application.
 

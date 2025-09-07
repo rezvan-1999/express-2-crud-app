@@ -6,3 +6,37 @@ let products = [
   { id: 5, name: "DJI Mavic Air 2", price: 799.99 },
 ];
 
+function getAllProducts(req, res) {
+  try {
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
+
+function getSinglProduct(req, res) {
+  try {
+    const { id } = req.params;
+    const singleProduct = products.find((item) => item.id === Number(id));
+
+    if (singleProduct) {
+      res.status(200).json(singleProduct);
+    }
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
+
+function newProduct(req, res) {}
+
+function updateProduct(req, res) {}
+
+function deleteProduct(req, res) {}
+
+module.exports = {
+  getAllProducts,
+  getSinglProduct,
+  newProduct,
+  updateProduct,
+  deleteProduct,
+};
