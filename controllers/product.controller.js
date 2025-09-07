@@ -10,7 +10,8 @@ function getAllProducts(req, res) {
   try {
     res.status(200).json(products);
   } catch (error) {
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 }
 
@@ -21,9 +22,14 @@ function getSinglProduct(req, res) {
 
     if (singleProduct) {
       res.status(200).json(singleProduct);
+    } else {
+      res
+        .status(404)
+        .json({ msg: `The product with id: ${id} was not found!` });
     }
   } catch (error) {
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 }
 
@@ -31,7 +37,11 @@ function newProduct(req, res) {
   try {
     const { name, price } = req.body;
 
-    newProduct = {
+    if (!name || !price) {
+      return res.status(400).json({ msg: "name and price are required!" });
+    }
+
+    const newProduct = {
       id: products.length + 1,
       name,
       price,
@@ -39,9 +49,13 @@ function newProduct(req, res) {
 
     products.push(newProduct);
 
-    res.status(201).json(newProduct);
+    res.status(201).json({
+      msg: "The new product was created successfully!",
+      product: newProduct,
+    });
   } catch (error) {
-    res.status(404).send(error);
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 }
 
@@ -52,12 +66,7 @@ function updateProduct(req, res) {
   }
 }
 
-function deleteProduct(req, res) {
-  try {
-  } catch (error) {
-    res.status(404).send(error);
-  }
-}
+function deleteProduct(req, res) {}
 
 module.exports = {
   getAllProducts,
