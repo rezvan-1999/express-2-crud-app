@@ -27,11 +27,37 @@ function getSinglProduct(req, res) {
   }
 }
 
-function newProduct(req, res) {}
+function newProduct(req, res) {
+  try {
+    const { name, price } = req.body;
 
-function updateProduct(req, res) {}
+    newProduct = {
+      id: products.length + 1,
+      name,
+      price,
+    };
 
-function deleteProduct(req, res) {}
+    products.push(newProduct);
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
+
+function updateProduct(req, res) {
+  try {
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
+
+function deleteProduct(req, res) {
+  try {
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
 
 module.exports = {
   getAllProducts,
