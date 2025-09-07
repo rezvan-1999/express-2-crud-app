@@ -5,3 +5,15 @@ let products = [
   { id: 4, name: "MacBook Pro 16", price: 2399.99 },
   { id: 5, name: "DJI Mavic Air 2", price: 799.99 },
 ];
+
+const expess = require("express");
+
+const router = expess.Router();
+
+router.get("/", getAllProducts);
+router.get("/:id", getSinglProduct);
+router.post("/", newProduct);
+router.patch("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
+
+module.exports = router;

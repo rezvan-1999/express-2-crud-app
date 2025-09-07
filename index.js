@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const expess = require("express");
 const cors = require("cors");
+const productRouter = require("./routes/product.route");
 
 const app = expess();
 
@@ -9,13 +10,11 @@ app.use(cors());
 app.use(expess.json());
 app.use(expess.urlencoded({ extended: true }));
 
-
-
 app.get("/", (req, res) => {
   res.send("Welcome to home page!");
 });
 
-app.use("/", )
+app.use("/product", productRouter);
 
 app.use((req, res) => {
   res.status(404).json({ msg: "sorry, the page was NOT FOUND!" });

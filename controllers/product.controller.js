@@ -5,3 +5,4 @@ let products = [
   { id: 4, name: "MacBook Pro 16", price: 2399.99 },
   { id: 5, name: "DJI Mavic Air 2", price: 799.99 },
 ];
+
