@@ -3,12 +3,15 @@ require("dotenv").config();
 const expess = require("express");
 const cors = require("cors");
 const productRouter = require("./routes/product.route");
+const logger = require("./middleware/product.middleware");
 
 const app = expess();
 
 app.use(cors());
 app.use(expess.json());
 app.use(expess.urlencoded({ extended: true }));
+
+app.use(logger);
 
 app.get("/", (req, res) => {
   res.send("Welcome to home page!");
